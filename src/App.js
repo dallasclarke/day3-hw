@@ -1,25 +1,30 @@
-import logo from './logo.svg';
+import React, { Component } from "react";
+
+import Fruit from "./components/Fruit";
 import './App.css';
 
-function App() {
-  return (
+class App extends Component {
+  state = {
+    fruit: "Apple",
+    url: "https://i.ytimg.com/vi/aQ4CE0XA1AA/maxresdefault.jpg",
+  };
+
+  changeFruit = (e) => {
+    this.setState({
+      fruit: e.target.value
+    })
+  }
+
+  render() {
+    return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Fruit 
+        name={this.state.fruit}
+        changeFruit={this.changeFruit}
+      />
     </div>
-  );
+    )
+  }
 }
 
 export default App;
